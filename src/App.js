@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import HomeContainer from './containers/HomeContainer';
+import AboutContainer from './containers/AboutContainer';
+import ContactContainer from './containers/ContactContainer';
 
 class App extends Component {
+  state = {
+    page: 'home'
+  }
+
+  handleNavLink = param => e => {
+    e.preventDefault()
+    this.setState({
+      page: param
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <ul>
+          {<li><a onClick={(e) => { e.preventDefault(); this.setState({page: 'home'})} } href="">Home</a></li>}
+          <li><a onClick={this.handleNavLink('about')} href="">About</a></li>
+          <li><a onClick={this.handleNavLink('contact')} href="">Contact</a></li>
+        </ul>
+
+        { this.state.page === 'home' && <HomeContainer /> }
+        { this.state.page === 'about' && <AboutContainer /> }
+        { this.state.page === 'contact' && <ContactContainer /> }
       </div>
     );
   }

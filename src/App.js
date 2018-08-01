@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HomeContainer from './containers/HomeContainer';
 import AboutContainer from './containers/AboutContainer';
 import ContactContainer from './containers/ContactContainer';
+import Navbar from './components/Navbar';
 
 class App extends Component {
   state = {
@@ -18,11 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <ul>
-          {<li><a onClick={(e) => { e.preventDefault(); this.setState({page: 'home'})} } href="">Home</a></li>}
-          <li><a onClick={this.handleNavLink('about')} href="">About</a></li>
-          <li><a onClick={this.handleNavLink('contact')} href="">Contact</a></li>
-        </ul>
+        <Navbar handleNavLink={this.handleNavLink} />
 
         { this.state.page === 'home' && <HomeContainer /> }
         { this.state.page === 'about' && <AboutContainer /> }

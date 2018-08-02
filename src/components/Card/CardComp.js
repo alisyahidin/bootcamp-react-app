@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SingularCard from './SingularCard/SingularCard';
+import { ScaleLoader } from 'react-spinners';
 
 import axios from 'axios';
 
@@ -17,13 +18,23 @@ export default class CardComp extends Component {
           loader: false
         })
       })
-      .catch(error => alert(error))
+      .catch(error => alert('Please check your internet connection'))
   }
 
   render() {
     return (
         <div style={{ marginBottom: '5rem' }}>
-          { this.state.loader === true && <h1>Loading</h1> }
+          <div style={{
+            display: this.state.loader === true ? 'flex' : 'none',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '75vh'
+          }}>
+            <ScaleLoader
+              color="grey"
+              loading={this.state.loader}
+            />
+          </div>
           { this.state.data.map((datum, index) => {
             return (
               <SingularCard

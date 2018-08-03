@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -39,7 +40,7 @@ function SingularCard(props) {
           <Grid item xs container direction="column" spacing={16}>
             <Grid item xs>
               <Typography gutterBottom variant="subheading">
-                { props.title }
+                <Link to={props.link}>{ props.title }</Link>
               </Typography>
               <Typography color="textSecondary">
                 { props.author.display_name }

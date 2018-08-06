@@ -1,0 +1,4 @@
+1. store -> where state is stored
+2. action / dispatcher -> trigger to do something on store
+3. reducer -> how state is changed / updated
+

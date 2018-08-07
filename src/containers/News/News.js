@@ -4,41 +4,26 @@ import Bottom from '../../components/Bottom/Bottom';
 import CardComp from '../../components/Card/CardComp';
 import NewsDetail from '../../components/NewsDetail/NewsDetail';
 import Aux from '../../hoc/Auxiliary';
-import axios from 'axios';
 
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 export default class News extends Component {
-  state = {
-    data: [],
-    loader: true
-  }
-
-  componentDidMount() {
-    axios.get('https://id.techinasia.com/wp-json/techinasia/3.0/posts?page=1&per_page=15')
-      .then(response => {
-        this.setState({
-          data: response.data.posts,
-          loader: false
-        })
-      })
-      .catch(error => alert('Please check your internet connection'))
-  }
-
   render() {
     return (
       <BrowserRouter>
         <Aux>
             <Header />
+            { console.log(this.props.state) }
             <Switch>
               <Route exact path="/" render={() => {
                 return <CardComp
-                  loader={this.state.loader}
-                  data={this.state.data} />
+                  loader={this.props.state.loader}
+                  data={this.props.state.payload} />
               }} />
-              { this.state.data.map(datum => {
-                return <Route path={`/${datum.slug}`}render={() => {
+              { this.props.state.payload.map(datum => {
+                return <Route key={datum.id} path={`/${datum.slug}`} render={() => {
                   return <NewsDetail
+                    key={datum.id}
                     content={datum.content}
                     title={datum.title}
                     image={datum.featured_image.source}

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import SingularCard from './SingularCard/SingularCard';
 import { ScaleLoader } from 'react-spinners';
 
-import axios from 'axios';
-
 export default class CardComp extends Component {
   render() {
     return (

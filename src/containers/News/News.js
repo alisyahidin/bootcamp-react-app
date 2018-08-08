@@ -13,14 +13,14 @@ export default class News extends Component {
       <BrowserRouter>
         <Aux>
             <Header />
-            { console.log(this.props.state) }
             <Switch>
               <Route exact path="/" render={() => {
                 return <CardComp
                   loader={this.props.state.loader}
                   data={this.props.state.payload} />
               }} />
-              { this.props.state.payload.map(datum => {
+              <Route path="/:slug" component={ NewsDetail }/>
+              {/* this.props.state.payload.map(datum => {
                 return <Route key={datum.id} path={`/${datum.slug}`} render={() => {
                   return <NewsDetail
                     key={datum.id}
@@ -29,7 +29,7 @@ export default class News extends Component {
                     image={datum.featured_image.source}
                   />
                 }} />
-              }) }
+              }) */}
               <Redirect from="*" to="/" />
             </Switch>
           <Bottom />

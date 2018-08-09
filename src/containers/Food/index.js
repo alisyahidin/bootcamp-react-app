@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Grid from '@material-ui/core/Grid';
 import CarouselComponent from '../../components/CarouselComponent';
 import CardComponent from '../../components/CardComponent';
 
@@ -45,9 +46,15 @@ export default class Food extends Component {
     return (
       <Aux>
         <CarouselComponent images={ this.state.images } />
+        <Grid container spacing={24}>
         { this.state.foods.map((food, index) => {
-          return <CardComponent key={ index } food={ food }/>
+          return (
+            <Grid item xs={12} sm={6} md={4}>
+              <CardComponent key={ index } food={ food }/>
+            </Grid>
+          )
         }) }
+        </Grid>
       </Aux>
     );
   }

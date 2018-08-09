@@ -55,9 +55,9 @@ class Main extends React.Component {
             textColor="primary"
             centered
           >
-            <Tab style={{width: '30%'}} icon={<DirectionsCarIcon />} />
-            <Tab style={{width: '30%'}} icon={<RestaurantIcon />} />
-            <Tab style={{width: '30%'}} icon={<ChatIcon />} />
+            <Tab style={{width: '33%'}} icon={<DirectionsCarIcon />} />
+            <Tab style={{width: '33%'}} icon={<RestaurantIcon />} />
+            <Tab style={{width: '33%'}} icon={<ChatIcon />} />
           </Tabs>
         </Paper>
         <SwipeableViews

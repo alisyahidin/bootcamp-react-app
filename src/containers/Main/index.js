@@ -10,6 +10,10 @@ import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
 import ChatIcon from '@material-ui/icons/Chat';
 
+import Transport from '../Transport';
+import Food from '../Food';
+import Chat from '../Chat';
+
 function TabContainer({ children, dir }) {
   return (
     <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -66,9 +70,15 @@ class Main extends React.Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <TabContainer dir={theme.direction}>Item One</TabContainer>
-          <TabContainer dir={theme.direction}>Item Two</TabContainer>
-          <TabContainer dir={theme.direction}>Item Three</TabContainer>
+          <TabContainer dir={theme.direction}>
+            <Transport />
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <Food />
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <Chat />
+          </TabContainer>
         </SwipeableViews>
       </div>
     );

@@ -10,11 +10,11 @@ const styles = theme => ({
   card: {
     display: 'flex',
     flexDirection: 'space-around',
-    margin: '1rem 0'
+    height: '5rem'
   },
   cover: {
-    width: 145,
-    height: 145,
+    width: '5rem',
+    height: '5rem',
   },
   content: {
     flexGrow: 1,

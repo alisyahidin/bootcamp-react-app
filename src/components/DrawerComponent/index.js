@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -13,81 +12,65 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 
 const styles = {
   list: {
-    width: '50vw',
+    width: '300px',
   }
 };
 
-class DrawerComponent extends React.Component {
-  state = {
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  };
+const DrawerComponent = (props) => {
+  const { classes } = props;
 
-  toggleDrawer = (side, open) => () => {
-    this.setState({
-      [side]: open,
-    });
-  };
+  const sideList = (
+    <div className={classes.list}>
+      <List component="nav">
+        <ListItem button>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Inbox" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <DraftsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Drafts" />
+        </ListItem>
+      </List>
+      <Divider />
+      <List component="nav">
+        <ListItem button>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Inbox" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <DraftsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Drafts" />
+        </ListItem>
+      </List>
+    </div>
+  );
 
-  render() {
-    const { classes } = this.props;
-
-    const sideList = (
-      <div className={classes.list}>
-        <List component="nav">
-          <ListItem button>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Inbox" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <DraftsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Drafts" />
-          </ListItem>
-        </List>
-        <Divider />
-        <List component="nav">
-          <ListItem button>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Inbox" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <DraftsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Drafts" />
-          </ListItem>
-        </List>
-      </div>
-    );
-
-    return (
-      <div>
-        <Button onClick={this.toggleDrawer('left', true)}>Open Left</Button>
-        <SwipeableDrawer
-          open={this.state.left}
-          onClose={this.toggleDrawer('left', false)}
-          onOpen={this.toggleDrawer('left', true)}
+  return (
+    <div>
+      <SwipeableDrawer
+        open={props.drawerOpen}
+        onClose={props.handleDrawerToggle(false)}
+        onOpen={props.handleDrawerToggle(true)}
+      >
+        <div
+          tabIndex={0}
+          role="button"
+          onClick={props.handleDrawerToggle(false)}
+          onKeyDown={props.handleDrawerToggle(false)}
         >
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer('left', false)}
-            onKeyDown={this.toggleDrawer('left', false)}
-          >
-            {sideList}
-          </div>
-        </SwipeableDrawer>
-      </div>
-    );
-  }
+          {sideList}
+        </div>
+      </SwipeableDrawer>
+    </div>
+  );
 }
 
 DrawerComponent.propTypes = {

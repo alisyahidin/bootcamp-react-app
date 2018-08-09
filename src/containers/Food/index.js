@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Carousel } from 'react-responsive-carousel';
+import CarouselComponent from '../../components/CarouselComponent';
 
 import Aux from '../../hoc/Auxiliary';
 
@@ -19,21 +19,7 @@ export default class Food extends Component {
   render() {
     return (
       <Aux>
-        <Carousel
-          showStatus={ false }
-          showThumbs={ false }
-          infiniteLoop={ true }
-          autoPlay={ true }
-          interval={ 3000 }
-        >
-          { images.map((image, index) => {
-            return (
-              <div key={ index }>
-                <img alt={ `Carousel ${index}` } src={ image.link } />
-              </div>
-            )
-          }) }
-        </Carousel>
+        <CarouselComponent images={ images } />
       </Aux>
     );
   }

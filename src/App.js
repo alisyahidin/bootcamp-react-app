@@ -1,33 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Tabs, WhiteSpace, SearchBar } from 'antd-mobile';
+import CarouselComponent from './components/CarouselComponent';
 import './App.css';
 
-import { NavBar, Icon } from 'antd-mobile';
+const tabs = [
+  { title: 'Transport' },
+  { title: 'Food' },
+  { title: 'Delivery' },
+];
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <NavbarComponent />
+      <div style={{ backgroundColor: '#FFF' }}>
+        <Tabs tabs={tabs}
+          initialPage={1}
+          onChange={(tab, index) => { console.log('onChange', index, tab); }}
+          onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
+        >
+          <div className="main-content" style={{ height: '90vh' }}>
+            Content of first tab
+          </div>
+          <div>
+              <SearchBar placeholder="Search" maxLength={8} />
+              <WhiteSpace />
+              <CarouselComponent slideWidth="100px"/>
+              <div className="main-content" style={{ height: '60vh' }}>
+                yoo
+              </div>
+          </div>
+          <div className="main-content" style={{ height: '90vh' }}>
+            Content of third tab
+          </div>
+        </Tabs>
       </div>
     );
   }
 }
-
-export const NavbarComponent = () => {
-  return (
-    <div>
-      <NavBar
-        mode="dark"
-        leftContent="Back"
-        rightContent={[
-          <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-          <Icon key="1" type="ellipsis" />,
-        ]}
-      >NavBar</NavBar>
-    </div>
-  );
-};
-
 
 export default App;

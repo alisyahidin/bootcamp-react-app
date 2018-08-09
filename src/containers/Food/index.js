@@ -49,8 +49,8 @@ export default class Food extends Component {
         <Grid container spacing={24}>
         { this.state.foods.map((food, index) => {
           return (
-            <Grid item xs={12} sm={6} md={4}>
-              <CardComponent key={ index } food={ food }/>
+            <Grid key={ index } item xs={12} sm={6} md={4}>
+              <CardComponent food={ food }/>
             </Grid>
           )
         }) }

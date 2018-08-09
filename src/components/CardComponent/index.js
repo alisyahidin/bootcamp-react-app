@@ -36,10 +36,10 @@ function CardComponent(props) {
           title="Live from space album cover"
         />
         <CardContent className={classes.content}>
-          <Typography variant="headline">
+          <Typography variant="subheading">
             { food.name }
           </Typography>
-          <Typography variant="subheading" color="textSecondary">
+          <Typography color="textSecondary">
             { food.address }
           </Typography>
         </CardContent>

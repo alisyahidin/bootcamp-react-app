@@ -36,6 +36,7 @@ class Main extends React.Component {
 
   handleChange = (event, value) => {
     this.setState({ value });
+    this.props.handlePageTransition(value);
   };
 
   handleChangeIndex = index => {
@@ -47,7 +48,7 @@ class Main extends React.Component {
 
     return (
       <div>
-        <Paper className={classes.root}>
+        <Paper className={classes.root} square>
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}

@@ -8,6 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import Typography from '@material-ui/core/Typography';
 
 import DrawerComponent from '../DrawerComponent';
 
@@ -17,6 +18,7 @@ const styles = {
   },
   flex: {
     flexGrow: 1,
+    textAlign: 'center'
   },
   menuButton: {
     marginLeft: -12,
@@ -56,7 +58,9 @@ class AppBarComponent extends Component {
             <IconButton onClick={ this.handleDrawerToggle(true) } color="inherit" aria-label="Menu">
               <MenuIcon />
             </IconButton>
-            <div className={classes.flex}></div>
+            <Typography variant="title" color="inherit" className={classes.flex}>
+              { this.props.page }
+            </Typography>
             <div>
               <IconButton
                 aria-owns="menu-appbar"
@@ -94,6 +98,7 @@ class AppBarComponent extends Component {
 
 AppBarComponent.propTypes = {
   classes: PropTypes.object.isRequired,
+  page: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(AppBarComponent);

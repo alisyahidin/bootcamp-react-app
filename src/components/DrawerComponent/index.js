@@ -12,7 +12,7 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 
 const styles = {
   list: {
-    width: '300px',
+    width: '250px',
   }
 };
 

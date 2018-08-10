@@ -36,6 +36,7 @@ const styles = {
 class Main extends React.Component {
   state = {
     value: 1,
+    fixed: false
   };
 
   handleChange = (event, value) => {
@@ -47,12 +48,30 @@ class Main extends React.Component {
     this.setState({ value: index });
   };
 
+  handleScroll = (e) => {
+    e.pageY > 55
+      ?
+      this.setState({
+        fixed: true
+      })
+      :
+      this.setState({
+        fixed: false
+      })
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
   render() {
     const { classes, theme } = this.props;
 
     return (
-      <div>
-        <Paper className={classes.root} square>
+      <div style={{ width: '100%' }}>
+        <Paper className={classes.root} square
+          style={{ position: this.state.fixed ? 'fixed' : '', top: '0px', zIndex: 1000, width: '100%' }}
+        >
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}
@@ -66,6 +85,7 @@ class Main extends React.Component {
           </Tabs>
         </Paper>
         <SwipeableViews
+          style={{ marginTop: this.state.fixed ? '3rem' : '0rem'}}
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}

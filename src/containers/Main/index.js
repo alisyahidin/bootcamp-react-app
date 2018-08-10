@@ -79,6 +79,7 @@ class Main extends React.Component {
           </Tabs>
         </Paper>
         <SwipeableViews
+          animateHeight
           style={{ marginTop: this.state.fixed ? '3rem' : '0rem'}}
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.value}

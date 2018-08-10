@@ -5,11 +5,11 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   card: {
     display: 'flex',
-    flexDirection: 'space-around',
     height: '5rem'
   },
   cover: {
@@ -28,8 +28,8 @@ function CardComponent(props) {
   const { classes, food } = props;
 
   return (
-    <div>
-      <Card className={classes.card}>
+    <Button style={{ border: 'none', padding: 0, margin: 0, width: '100%' }}>
+      <Card className={classes.card} style={{ width: '100%' }}>
         <CardMedia
           className={classes.cover}
           image={ food.image }
@@ -44,7 +44,7 @@ function CardComponent(props) {
           </Typography>
         </CardContent>
       </Card>
-    </div>
+    </Button>
   );
 }
 

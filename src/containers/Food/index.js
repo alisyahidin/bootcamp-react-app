@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
+import ButtonBase from '@material-ui/core/ButtonBase';
 import CarouselComponent from '../../components/CarouselComponent';
 import CardComponent from '../../components/CardComponent';
 
@@ -25,7 +26,7 @@ export default class Food extends Component {
         image: 'https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=aba7663f8f57d37a53706edff54fd1c6&auto=format&fit=crop&w=500&q=60'
       },
       {
-        name: 'Pizza',
+        name: 'Piza',
         address: 'Jl. Ir 9879a87s97',
         image: 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4fa061122a5ce899fcb5454dae8dbe99&auto=format&fit=crop&w=500&q=60'
       },

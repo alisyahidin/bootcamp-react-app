@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import Button from '@material-ui/core/Button';
 import CarouselComponent from '../../components/CarouselComponent';
 import CardComponent from '../../components/CardComponent';
 
+import RestaurantDetail from '../RestaurantDetail';
 import Aux from '../../hoc/Auxiliary';
 
-export default class Food extends Component {
+export default class Restaurant extends Component {
   state = {
+    openDetailRestaurant: false,
+    restaurant: null,
     images: [
       {
         link: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e0245bb4e87077312cc3d102e68c1efd&auto=format&fit=crop&w=500&q=60'
@@ -19,7 +22,7 @@ export default class Food extends Component {
         'link': 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=67fb2e7b1fbe39b18b51146234ef38aa&auto=format&fit=crop&w=500&q=60'
       }
     ],
-    foods: [
+    restaurants: [
       {
         name: 'Bakso',
         address: 'Jl. Ir Soekarno 123',
@@ -43,19 +46,34 @@ export default class Food extends Component {
     ]
   }
 
+  handleRestaurantToggle = (toggle, restaurant) => () => {
+    this.setState({
+      openDetailRestaurant: toggle,
+      restaurant
+    })
+  }
+
   render() {
     return (
       <Aux>
         <CarouselComponent images={ this.state.images } />
         <Grid container spacing={24}>
-        { this.state.foods.map((food, index) => {
+        { this.state.restaurants.map((restaurant, index) => {
           return (
             <Grid key={ index } item xs={12} sm={6} md={4}>
-              <CardComponent food={ food }/>
+              <Button onClick={ this.handleRestaurantToggle(true, restaurant) } style={{ padding: 0, margin: 0, width: '100%' }}>
+                <CardComponent restaurant={ restaurant }/>
+              </Button>
             </Grid>
           )
         }) }
         </Grid>
+
+        <RestaurantDetail
+          openDetailRestaurant={ this.state.openDetailRestaurant }
+          handleRestaurantToggle={ this.handleRestaurantToggle }
+          restaurant={ this.state.restaurant ? this.state.restaurant.name : '' }
+        />
       </Aux>
     );
   }

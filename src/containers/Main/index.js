@@ -11,7 +11,7 @@ import RestaurantIcon from '@material-ui/icons/Restaurant';
 import ChatIcon from '@material-ui/icons/Chat';
 
 import Transport from '../Transport';
-import Food from '../Food';
+import Restaurant from '../Restaurant';
 import Chat from '../Chat';
 
 function TabContainer({ children, dir }) {
@@ -89,7 +89,7 @@ class Main extends React.Component {
             <Transport />
           </TabContainer>
           <TabContainer dir={theme.direction}>
-            <Food />
+            <Restaurant />
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <Chat />

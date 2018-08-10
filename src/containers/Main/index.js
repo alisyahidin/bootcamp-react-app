@@ -49,15 +49,9 @@ class Main extends React.Component {
   };
 
   handleScroll = (e) => {
-    e.pageY > 55
-      ?
-      this.setState({
-        fixed: true
-      })
-      :
-      this.setState({
-        fixed: false
-      })
+    this.setState({
+      fixed: window.scrollY > 53 ? true : false
+    })
   }
 
   componentDidMount() {

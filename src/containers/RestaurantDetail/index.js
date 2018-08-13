@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 
 import RestaurantBar from './RestaurantBar';
+import ListComponent from '../../components/ListComponent';
 
 const styles = {
   list: {
@@ -23,7 +24,7 @@ class RestaurantDetail extends React.Component {
         />
 
         <div className={classes.list}>
-          { this.props.restaurant }
+          <ListComponent />
         </div>
       </Drawer>
     );

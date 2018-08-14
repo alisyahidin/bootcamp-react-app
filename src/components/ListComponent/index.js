@@ -3,92 +3,50 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
+import Badge from '@material-ui/core/Badge';
+import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import CommentIcon from '@material-ui/icons/Comment';
-import Collapse from '@material-ui/core/Collapse';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const styles = theme => ({
   root: {
-    width: '100%',
-    maxWidth: 360,
+    width: '90vw',
+    margin: '0 auto',
     backgroundColor: theme.palette.background.paper,
   },
-  nested: {
-    paddingLeft: theme.spacing.unit * 4,
+  list: {
+    marginLeft: '5vw'
+  },
+  badge: {
+    top: 0,
+    left: -27,
+    border: `2px solid ${
+      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
+    }`,
   },
 });
 
 class ListComponent extends React.Component {
-  state = {
-    checked: [0],
-    open: false
-  };
-
-  handleToggle = value => () => {
-    const { checked } = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    this.setState({
-      checked: newChecked,
-    });
-  };
-
-  handleClick = () => {
-    this.setState(prevState => ({ open: !prevState.open }))
-  }
-
   render() {
-    const { classes } = this.props;
+    const { classes, foodList } = this.props;
 
     return (
       <div className={classes.root}>
         <List>
-          <ListItem button onClick={this.handleClick}>
-            <ListItemIcon>
-              <CommentIcon />
-            </ListItemIcon>
-            <ListItemText inset primary="Inbox" />
-            {this.state.open ? <ExpandLess /> : <ExpandMore />}
-          </ListItem>
-          <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-            <List>
-              {[0, 1, 2, 3].map(value => (
-                <ListItem
-                  key={value}
-                  role={undefined}
-                  dense
-                  button
-                  onClick={this.handleToggle(value)}
-                  className={classes.listItem}
-                >
-                  <Checkbox
-                    checked={this.state.checked.indexOf(value) !== -1}
-                    tabIndex={-1}
-                    disableRipple
-                  />
-                  <ListItemText primary={`Line item ${value + 1}`} />
-                  <ListItemSecondaryAction>
-                    <IconButton aria-label="Comments">
-                      <CommentIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </ListItem>
-              ))}
-            </List>
-          </Collapse>
+        { foodList.map((food, index) => {
+          return (
+            <ListItem key={index} className={classes.list}>
+              <Badge color="primary" badgeContent={0} classes={{ badge: classes.badge }}>
+                <ListItemText primary={food.name} />
+              </Badge>
+              <ListItemText primary={food.price} />
+              <IconButton>
+                <AddCircleIcon />
+              </IconButton>
+            </ListItem>
+          )
+        }) }
         </List>
       </div>
     );

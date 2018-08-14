@@ -19,12 +19,12 @@ class RestaurantDetail extends React.Component {
     return (
       <Drawer anchor="right" open={this.props.openDetailRestaurant} onClose={this.props.handleRestaurantToggle(false)}>
         <RestaurantBar
-          restaurantName={this.props.restaurant}
+          restaurantName={this.props.restaurantName}
           handleRestaurantToggle={this.props.handleRestaurantToggle}
         />
 
         <div className={classes.list}>
-          <ListComponent />
+          <ListComponent foodList={this.props.restaurantFoodList} />
         </div>
       </Drawer>
     );

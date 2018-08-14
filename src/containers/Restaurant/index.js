@@ -26,23 +26,63 @@ export default class Restaurant extends Component {
       {
         name: 'Bakso',
         address: 'Jl. Ir Soekarno 123',
-        image: 'https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=aba7663f8f57d37a53706edff54fd1c6&auto=format&fit=crop&w=500&q=60'
+        image: 'https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=aba7663f8f57d37a53706edff54fd1c6&auto=format&fit=crop&w=500&q=60',
+        foodList: [
+          {
+            name: 'Bakso Rudal',
+            price: 10000
+          },
+          {
+            name: 'Apple Juice',
+            price: 3000
+          }
+        ]
       },
       {
         name: 'Piza',
         address: 'Jl. Ir 9879a87s97',
-        image: 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4fa061122a5ce899fcb5454dae8dbe99&auto=format&fit=crop&w=500&q=60'
+        image: 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4fa061122a5ce899fcb5454dae8dbe99&auto=format&fit=crop&w=500&q=60',
+        foodList: [
+          {
+            name: 'Bakso Rudal',
+            price: 10000
+          },
+          {
+            name: 'Apple Juice',
+            price: 3000
+          }
+        ]
       },
       {
         name: 'Pisang Cokelat',
         address: 'Jl. Maju mundur',
-        image: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c9443baefd581d4e532b6d4f1e7879be&auto=format&fit=crop&w=500&q=60'
+        image: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c9443baefd581d4e532b6d4f1e7879be&auto=format&fit=crop&w=500&q=60',
+        foodList: [
+          {
+            name: 'Bakso Rudal',
+            price: 10000
+          },
+          {
+            name: 'Apple Juice',
+            price: 3000
+          }
+        ]
       },
       {
         name: 'Pizza Asli',
         address: 'Jl. Maju Hutz',
-        image: 'https://images.unsplash.com/photo-1506354666786-959d6d497f1a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=86c8c1fd5e9e5b384696472a095c42ac&auto=format&fit=crop&w=500&q=60'
-      },
+        image: 'https://images.unsplash.com/photo-1506354666786-959d6d497f1a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=86c8c1fd5e9e5b384696472a095c42ac&auto=format&fit=crop&w=500&q=60',
+        foodList: [
+          {
+            name: 'Bakso Rudal',
+            price: 10000
+          },
+          {
+            name: 'Apple Juice',
+            price: 3000
+          }
+        ]
+      }
     ]
   }
 
@@ -57,6 +97,7 @@ export default class Restaurant extends Component {
     return (
       <Aux>
         <CarouselComponent images={ this.state.images } />
+
         <Grid container spacing={24}>
         { this.state.restaurants.map((restaurant, index) => {
           return (
@@ -72,7 +113,8 @@ export default class Restaurant extends Component {
         <RestaurantDetail
           openDetailRestaurant={ this.state.openDetailRestaurant }
           handleRestaurantToggle={ this.handleRestaurantToggle }
-          restaurant={ this.state.restaurant ? this.state.restaurant.name : '' }
+          restaurantName={ this.state.restaurant ? this.state.restaurant.name : '' }
+          restaurantFoodList={ this.state.restaurant ? this.state.restaurant.foodList : [] }
         />
       </Aux>
     );

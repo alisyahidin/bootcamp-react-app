@@ -4,10 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 const styles = {
   flex: {
@@ -42,9 +41,7 @@ function RestaurantBar(props) {
           className={classes.iconButtonRight}
           color="inherit"
         >
-          <Badge badgeContent={99} color="secondary">
-            <ShoppingCartIcon />
-          </Badge>
+          <InfoOutlinedIcon />
         </IconButton>
       </Toolbar>
     </AppBar>

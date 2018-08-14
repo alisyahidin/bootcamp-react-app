@@ -29,8 +29,28 @@ export default class Restaurant extends Component {
         image: 'https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=aba7663f8f57d37a53706edff54fd1c6&auto=format&fit=crop&w=500&q=60',
         foodList: [
           {
-            name: 'Bakso Rudal',
+            name: 'Bakso Rudal Bakso',
             price: 10000
+          },
+          {
+            name: 'Apple Juice',
+            price: 3000
+          },
+          {
+            name: 'Apple Juice',
+            price: 3000
+          },
+          {
+            name: 'Apple Juice',
+            price: 3000
+          },
+          {
+            name: 'Apple Juice',
+            price: 3000
+          },
+          {
+            name: 'Apple Juice',
+            price: 3000
           },
           {
             name: 'Apple Juice',

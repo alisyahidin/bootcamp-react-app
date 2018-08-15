@@ -5,19 +5,15 @@ import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import RestaurantIcon from '@material-ui/icons/Restaurant';
-import StoreIcon from '@material-ui/icons/Store';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+
+import ContentRouter from '../../components/ContentRouter';
+import MenuItem from './MenuItem';
 
 const drawerWidth = 240;
 
@@ -88,7 +84,7 @@ const styles = theme => ({
 
 class MainContainer extends React.Component {
   state = {
-    open: false,
+    open: true,
   };
 
   handleDrawerOpen = () => {
@@ -118,9 +114,7 @@ class MainContainer extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" noWrap>
-
-              Admin
-
+              Admin Panel
             </Typography>
           </Toolbar>
         </AppBar>
@@ -137,30 +131,11 @@ class MainContainer extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <List>
-            <ListItem button>
-              <ListItemIcon>
-                <StoreIcon />
-              </ListItemIcon>
-              <ListItemText primary="Restaurant" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <RestaurantIcon />
-              </ListItemIcon>
-              <ListItemText primary="Food" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <ShoppingCartIcon />
-              </ListItemIcon>
-              <ListItemText primary="Order" />
-            </ListItem>
-          </List>
+          <MenuItem />
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Typography noWrap>{'Content'}</Typography>
+          <ContentRouter />
         </main>
       </div>
     );

@@ -13,6 +13,10 @@ const styles = {
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
+  cardAction: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  }
 };
 
 function CardComponent(props) {
@@ -25,20 +29,16 @@ function CardComponent(props) {
         title={ props.restaurant.name }
       />
       <CardContent>
-        <Typography gutterBottom variant="headline" component="h2">
+        <Typography align="center" gutterBottom variant="headline" component="h2">
           { props.restaurant.name }
         </Typography>
-        <Typography component="p">
-          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-          across all continents except Antarctica
-        </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions style={styles.cardAction}>
         <Button size="small" color="primary">
-          Share
+          Update
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          Remove
         </Button>
       </CardActions>
     </Card>

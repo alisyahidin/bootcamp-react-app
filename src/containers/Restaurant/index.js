@@ -29,7 +29,7 @@ class RestaurantContainer extends Component {
       <div style={{ scroll: 'auto' }}>
         <Grid container spacing={24}>
             { data.map(restaurant => (
-              <Grid item sm={4}>
+              <Grid item md={3} sm={4} xs={12}>
                 <Content restaurant={restaurant} />
               </Grid>
             )) }

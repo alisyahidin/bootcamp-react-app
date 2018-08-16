@@ -1,6 +1,6 @@
-const baseRoute = 'http://localhost:5000/api';
-const restaurantRoute = 'http://localhost:5000/api/restaurants';
-const foodRoute = 'http://localhost:5000/api/foods';
-const orderRoute = 'http://localhost:5000/api/orders';
+const baseRoute = 'https://ali-grab-food.glitch.me/api';
+const restaurantRoute = `${baseRoute}/restaurants`;
+const foodRoute = `${baseRoute}/foods`;
+const orderRoute = `${baseRoute}/orders`;
 
 export { baseRoute, restaurantRoute, foodRoute, orderRoute }

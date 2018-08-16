@@ -11,6 +11,8 @@ import { withStyles } from '@material-ui/core/styles';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Tooltip from '@material-ui/core/Tooltip';
 
+import DialogForm from './DialogForm';
+
 const styles = theme => ({
   root: {
     position: 'fixed',
@@ -21,7 +23,7 @@ const styles = theme => ({
     background: '#333',
     color: theme.palette.text.white,
     boxShadow: theme.shadows[1],
-    fontSize: 13,
+    fontSize: '1rem',
     marginRight: -3
   }
 });
@@ -31,8 +33,8 @@ class MenuAdd extends React.Component {
     open: false,
   };
 
-  handleToggle = () => {
-    this.setState(state => ({ open: !state.open }));
+  handleClick = value => () => {
+    this.setState({ open: value });
   };
 
   render() {
@@ -41,10 +43,14 @@ class MenuAdd extends React.Component {
     return (
       <div className={classes.root}>
         <Tooltip title="Add New" placement="left" classes={{ tooltip: classes.lightTooltip }}>
-        <Button style={{ borderRadius: '50%', padding: 0 }}>
-          <AddCircleIcon style={{ fontSize: '5rem' }} color="secondary" />
-        </Button>
+          <Button
+            onClick={this.handleClick(true)}
+            style={{ borderRadius: '50%', padding: 0 }}
+          >
+            <AddCircleIcon style={{ fontSize: '5rem' }} color="secondary" />
+          </Button>
         </Tooltip>
+        <DialogForm open={this.state.open} handleClick={this.handleClick} />
       </div>
     );
   }

@@ -11,6 +11,9 @@ import { withStyles } from '@material-ui/core/styles';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Tooltip from '@material-ui/core/Tooltip';
 
+import axios from 'axios';
+import { restaurantRoute } from '../../config/api';
+
 import DialogForm from './DialogForm';
 
 const styles = theme => ({
@@ -31,11 +34,27 @@ const styles = theme => ({
 class MenuAdd extends React.Component {
   state = {
     open: false,
+    name: '',
+    image: ''
   };
 
   handleClick = value => () => {
     this.setState({ open: value });
   };
+
+  handleFormChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
+
+  handleSubmit = () => {
+    const data = { ...this.state }
+
+    console.log(data) // tinggal post use axios
+
+    this.handleClick(false)()
+  }
 
   render() {
     const { classes } = this.props;
@@ -50,7 +69,13 @@ class MenuAdd extends React.Component {
             <AddCircleIcon style={{ fontSize: '5rem' }} color="secondary" />
           </Button>
         </Tooltip>
-        <DialogForm open={this.state.open} handleClick={this.handleClick} />
+        <DialogForm
+          open={this.state.open}
+          handleClick={this.handleClick}
+          data={this.state.data}
+          handleFormChange={this.handleFormChange}
+          handleSubmit={this.handleSubmit}
+        />
       </div>
     );
   }

@@ -16,8 +16,6 @@ const styles = {
 }
 
 export default class DialogForm extends React.Component {
-  state = {};
-
   render() {
     return (
       <Dialog
@@ -33,6 +31,7 @@ export default class DialogForm extends React.Component {
             id="name"
             label="Name"
             type="text"
+            onChange={this.props.handleFormChange}
           />
 
           <TextField
@@ -40,13 +39,14 @@ export default class DialogForm extends React.Component {
             id="image"
             label="Image URL"
             type="text"
+            onChange={this.props.handleFormChange}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={this.props.handleClick(false)} color="primary">
             Cancel
           </Button>
-          <Button onClick={this.props.handleClick(false)} color="primary">
+          <Button onClick={this.props.handleSubmit} color="primary">
             Subscribe
           </Button>
         </DialogActions>

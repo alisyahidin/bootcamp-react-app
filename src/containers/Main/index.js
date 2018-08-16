@@ -14,7 +14,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import ContentRouter from '../../components/ContentRouter';
 import MenuItem from './MenuItem';
-import MenuAdd from './MenuAdd';
 
 const drawerWidth = 240;
 
@@ -103,7 +102,7 @@ class MainContainer extends React.Component {
     return (
       <div className={classes.root}>
         <AppBar
-          position="absolute"
+          position="fixed"
           className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
         >
           <Toolbar disableGutters={!this.state.open}>
@@ -139,7 +138,6 @@ class MainContainer extends React.Component {
           <div className={classes.toolbar} />
           <ContentRouter />
         </main>
-        <MenuAdd />
       </div>
     );
   }

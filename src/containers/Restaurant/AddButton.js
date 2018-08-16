@@ -1,18 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Tooltip from '@material-ui/core/Tooltip';
-
-import axios from 'axios';
-import { restaurantRoute } from '../../config/api';
 
 import DialogForm from './DialogForm';
 
@@ -31,30 +22,14 @@ const styles = theme => ({
   }
 });
 
-class MenuAdd extends React.Component {
+class AddButton extends React.Component {
   state = {
-    open: false,
-    name: '',
-    image: ''
+    open: false
   };
 
   handleClick = value => () => {
     this.setState({ open: value });
   };
-
-  handleFormChange = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value
-    })
-  }
-
-  handleSubmit = () => {
-    const data = { ...this.state }
-
-    console.log(data) // tinggal post use axios
-
-    this.handleClick(false)()
-  }
 
   render() {
     const { classes } = this.props;
@@ -73,16 +48,16 @@ class MenuAdd extends React.Component {
           open={this.state.open}
           handleClick={this.handleClick}
           data={this.state.data}
-          handleFormChange={this.handleFormChange}
-          handleSubmit={this.handleSubmit}
+          handleFormChange={this.props.handleFormChange}
+          handleStore={this.props.handleStore}
         />
       </div>
     );
   }
 }
 
-MenuAdd.propTypes = {
+AddButton.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MenuAdd);
+export default withStyles(styles)(AddButton);

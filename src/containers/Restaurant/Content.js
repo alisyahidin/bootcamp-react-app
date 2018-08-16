@@ -19,30 +19,35 @@ const styles = {
   }
 };
 
-function CardComponent(props) {
-  const { classes } = props;
-  return (
-    <Card>
-      <CardMedia
-        className={classes.media}
-        image={ props.restaurant.image }
-        title={ props.restaurant.name }
-      />
-      <CardContent>
-        <Typography align="center" gutterBottom variant="headline" component="h2">
-          { props.restaurant.name }
-        </Typography>
-      </CardContent>
-      <CardActions style={styles.cardAction}>
-        <Button size="small" color="primary">
-          Update
-        </Button>
-        <Button size="small" color="primary">
-          Remove
-        </Button>
-      </CardActions>
-    </Card>
-  );
+class CardComponent extends React.Component {
+
+
+  render() {
+    const { classes, restaurant } = this.props;
+
+    return (
+      <Card>
+        <CardMedia
+          className={classes.media}
+          image={ restaurant.image }
+          title={ restaurant.name }
+        />
+        <CardContent>
+          <Typography align="center" gutterBottom variant="headline" component="h2">
+            { restaurant.name }
+          </Typography>
+        </CardContent>
+        <CardActions style={styles.cardAction}>
+          <Button size="small" color="primary">
+            Update
+          </Button>
+          <Button size="small" color="primary" onClick={this.props.handleDelete}>
+            Remove
+          </Button>
+        </CardActions>
+      </Card>
+    );
+  }
 }
 
 CardComponent.propTypes = {

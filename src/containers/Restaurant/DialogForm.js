@@ -4,7 +4,6 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 const styles = {
@@ -16,6 +15,11 @@ const styles = {
 }
 
 export default class DialogForm extends React.Component {
+  handleSubmit = () => {
+    this.props.handleStore()
+    this.props.handleClick(false)()
+  }
+
   render() {
     return (
       <Dialog
@@ -46,8 +50,8 @@ export default class DialogForm extends React.Component {
           <Button onClick={this.props.handleClick(false)} color="primary">
             Cancel
           </Button>
-          <Button onClick={this.props.handleSubmit} color="primary">
-            Subscribe
+          <Button onClick={this.handleSubmit} color="primary">
+            Create
           </Button>
         </DialogActions>
       </Dialog>

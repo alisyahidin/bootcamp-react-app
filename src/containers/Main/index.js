@@ -14,6 +14,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import ContentRouter from '../../components/ContentRouter';
 import MenuItem from './MenuItem';
+import MenuAdd from './MenuAdd';
 
 const drawerWidth = 240;
 
@@ -80,7 +81,7 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
-  },
+  }
 });
 
 class MainContainer extends React.Component {
@@ -114,7 +115,7 @@ class MainContainer extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="title" color="inherit" noWrap style={{ flexGrow: 1 }}>
+            <Typography variant="title" color="inherit" noWrap style={{ marginRight: 10, flexGrow: 1 }}>
               Admin Panel
             </Typography>
           </Toolbar>
@@ -138,6 +139,7 @@ class MainContainer extends React.Component {
           <div className={classes.toolbar} />
           <ContentRouter />
         </main>
+        <MenuAdd />
       </div>
     );
   }

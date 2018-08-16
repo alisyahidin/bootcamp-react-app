@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import Aux from '../Auxiliary';
 
-const withCrud = (WrappedComponent, payload, apiRoute) => (
+const withCrud = (payload, apiRoute) => WrappedComponent => (
   class extends Component {
     state = {
       data: [],

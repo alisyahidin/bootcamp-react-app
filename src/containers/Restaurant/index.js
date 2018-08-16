@@ -14,7 +14,7 @@ const payload = {
 
 const RestaurantContainer = (props) => {
   const { data, ...payload } = props.hocState
-console.log(payload)
+
   return (
     <div style={{ scroll: 'auto' }}>
       <Grid container spacing={24}>
@@ -36,4 +36,4 @@ console.log(payload)
   )
 }
 
-export default withCrud(RestaurantContainer, payload, restaurantRoute);
+export default withCrud(payload, restaurantRoute)(RestaurantContainer)

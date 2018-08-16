@@ -21,18 +21,21 @@ const styles = {
 
 class CardComponent extends React.Component {
   render() {
-    const { classes, restaurant } = this.props;
+    const { classes, food } = this.props;
 
     return (
       <Card>
         <CardMedia
           className={classes.media}
-          image={ restaurant.image }
-          title={ restaurant.name }
+          image={ food.image }
+          title={ food.name }
         />
         <CardContent>
-          <Typography align="center" gutterBottom variant="title" component="h2">
-            { restaurant.name }
+          <Typography align="center" gutterBottom variant="body2" component="h4">
+            { food.name }
+          </Typography>
+          <Typography align="center" component="p">
+            Rp. { food.price }
           </Typography>
         </CardContent>
         <CardActions style={styles.cardAction}>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Grid from '@material-ui/core/Grid';
 
-import CardComponent from '../../components/Card';
+import Content from './Content';
 import { restaurantRoute } from '../../config/api';
 
 class RestaurantContainer extends Component {
@@ -26,7 +27,13 @@ class RestaurantContainer extends Component {
 
     return (
       <div style={{ scroll: 'auto' }}>
-        { data.map(restaurant => <CardComponent />) }
+        <Grid container spacing={24}>
+            { data.map(restaurant => (
+              <Grid item sm={4}>
+                <Content restaurant={restaurant} />
+              </Grid>
+            )) }
+        </Grid>
       </div>
     );
   }

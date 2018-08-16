@@ -37,8 +37,8 @@ const MenuItem = props => {
     <List>
       { menuItems.map((menu, index) => {
         return (
-          <Link to={menu.link} style={{ textDecoration: 'none' }}>
-            <ListItem key={index} button>
+          <Link key={index} to={menu.link} style={{ textDecoration: 'none' }}>
+            <ListItem button>
               <ListItemIcon>
                   <menu.icon />
               </ListItemIcon>

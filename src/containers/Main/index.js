@@ -21,7 +21,8 @@ const drawerWidth = 240;
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 430,
+    height: '100vh',
+    overflowY: 'auto',
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -50,7 +51,7 @@ const styles = theme => ({
     display: 'none',
   },
   drawerPaper: {
-    position: 'relative',
+    position: 'fixed',
     whiteSpace: 'nowrap',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -137,7 +138,7 @@ class MainContainer extends React.Component {
           <Divider />
           <MenuItem />
         </Drawer>
-        <main className={classes.content}>
+        <main className={classes.content} style={{ marginLeft: this.state.open ? drawerWidth : 75 }} >
           <div className={classes.toolbar} />
           <ContentRouter />
         </main>

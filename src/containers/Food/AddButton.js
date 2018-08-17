@@ -47,7 +47,6 @@ class AddButton extends React.Component {
         <DialogForm
           open={this.state.open}
           handleClick={this.handleClick}
-          data={this.state.data}
           handleFormChange={this.props.handleFormChange}
           handleStore={this.props.handleStore}
         />

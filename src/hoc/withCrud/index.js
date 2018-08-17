@@ -7,6 +7,7 @@ const withCrud = (payload, apiRoute) => WrappedComponent => (
   class extends Component {
     state = {
       data: [],
+      idUpdate: '',
       ...payload
     }
 
@@ -28,7 +29,33 @@ const withCrud = (payload, apiRoute) => WrappedComponent => (
 
       axios.post(apiRoute, payload)
         .then(res => {
-          this.clearPayload(payload)
+          this.resetPayload(payload)
+          this.getData()
+        })
+        .catch(err => {
+          alert(err)
+          console.log(err)
+        })
+    }
+
+    showData = id => () => {
+      axios.get(`${apiRoute}/${id}`)
+        .then(res => {
+          this.setState(prevState => ({
+            ...prevState,
+            idUpdate: id,
+            ...res.data
+          }))
+        })
+        .catch(err => {
+          alert(err)
+          console.log(err)
+        })
+    }
+
+    putData = (id, payload) => () => {
+      axios.put(`${apiRoute}/${id}`, payload)
+        .then(res => {
           this.getData()
         })
         .catch(err => {
@@ -54,7 +81,7 @@ const withCrud = (payload, apiRoute) => WrappedComponent => (
       })
     }
 
-    clearPayload = (payload) => {
+    resetPayload = (payload) => {
       Object.keys(payload).forEach(key => {
         payload[key] = ''
       })
@@ -72,7 +99,10 @@ const withCrud = (payload, apiRoute) => WrappedComponent => (
           <WrappedComponent
             hocState={ this.state }
             postData={ this.postData }
+            showData={ this.showData }
+            putData={ this.putData }
             deleteData={ this.deleteData }
+            resetPayload={ this.resetPayload }
             handleFormChange={ this.handleFormChange }
             { ...this.props }
           />

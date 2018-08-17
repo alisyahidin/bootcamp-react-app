@@ -5,8 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import DialogForm from './DialogForm';
-
 const styles = theme => ({
   root: {
     position: 'fixed',
@@ -22,38 +20,25 @@ const styles = theme => ({
   }
 });
 
-class AddButton extends React.Component {
-  state = {
-    open: false
-  };
-
-  handleClick = value => () => {
-    this.setState({ open: value });
-  };
-
-  render() {
-    const { classes } = this.props;
-
-    return (
-      <div className={classes.root}>
-        <Tooltip title="Add New" placement="left" classes={{ tooltip: classes.lightTooltip }}>
-          <Button
-            onClick={this.handleClick(true)}
-            style={{ borderRadius: '50%', padding: 0 }}
-          >
-            <AddCircleIcon style={{ fontSize: '5rem' }} color="secondary" />
-          </Button>
-        </Tooltip>
-        <DialogForm
-          open={this.state.open}
-          handleClick={this.handleClick}
-          data={this.state.data}
-          handleFormChange={this.props.handleFormChange}
-          handleStore={this.props.handleStore}
-        />
-      </div>
-    );
+const AddButton = (props) => {
+  const { classes, controlDialogForm, resetPayload } = props;
+  const handleClick = () => {
+    resetPayload()
+    controlDialogForm(true, 'Create')()
   }
+
+  return (
+    <div className={classes.root}>
+      <Tooltip title="Add New" placement="left" classes={{ tooltip: classes.lightTooltip }}>
+        <Button
+          onClick={ handleClick }
+          style={{ borderRadius: '50%', padding: 0 }}
+        >
+          <AddCircleIcon style={{ fontSize: '5rem' }} color="secondary" />
+        </Button>
+      </Tooltip>
+    </div>
+  );
 }
 
 AddButton.propTypes = {

@@ -20,6 +20,11 @@ const styles = {
 };
 
 class CardComponent extends React.Component {
+  handleUpdate = () => {
+    this.props.showData()
+    this.props.controlDialogForm(true, 'Update')()
+  }
+
   render() {
     const { classes, restaurant } = this.props;
 
@@ -36,8 +41,8 @@ class CardComponent extends React.Component {
           </Typography>
         </CardContent>
         <CardActions style={styles.cardAction}>
-          <Button size="small" color="primary">
-            Update
+          <Button size="small" color="primary" onClick={this.handleUpdate}>
+            Edit
           </Button>
           <Button size="small" color="primary" onClick={this.props.handleDelete}>
             Remove
